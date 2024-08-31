@@ -1,8 +1,12 @@
 # World Clock VSCode Extension
 
+![Banner](https://github.com/alextoub/vscode-world-clock/blob/main/assets/banner.png)
+
 ## Purpose
 
 The World Clock VSCode Extension adds a customizable clock to your Visual Studio Code status bar. It allows you to display the current time in different timezones, with options to show seconds, use a 24-hour format, and customize the display format. This extension is useful for developers working across multiple timezones or who need to keep track of time in different regions.
+
+[![status-bar](https://github.com/alextoub/vscode-world-clock/blob/main/status-bar.png)]
 
 ## Features
 
