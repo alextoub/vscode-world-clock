@@ -8,6 +8,7 @@ export class ClockItem {
   constructor(
     private timezone: Timezone,
     private displaySeconds: boolean,
+    private displayClockTitle: boolean,
     alignment: vscode.StatusBarAlignment,
     priority: number
   ) {
@@ -26,9 +27,11 @@ export class ClockItem {
     };
 
     const formattedDateTime = now.toLocaleString("en-US", options);
-    const title = this.timezone.title
+    const title = this.displayClockTitle
       ? this.timezone.title
-      : this.timezone.timezone;
+        ? this.timezone.title
+        : this.timezone.timezone
+      : null;
     this.statusBarItem.text = `${title ? title + " " : ""}${formattedDateTime}`;
     this.statusBarItem.show();
   }

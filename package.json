@@ -68,6 +68,11 @@
           "type": "boolean",
           "default": false,
           "description": "Whether to show seconds in the status bar time."
+        },
+        "world-clock.displayClockTitle": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to show clock title in the status bar time."
         }
       }
     }

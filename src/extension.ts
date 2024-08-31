@@ -18,7 +18,10 @@ export function activate(context: vscode.ExtensionContext) {
   ];
   const position = configuration.get<string>("position") || "right";
   const displaySeconds: boolean = configuration.get("displaySeconds", false);
-
+  const displayClockTitle: boolean = configuration.get(
+    "displayClockTitle",
+    false
+  );
   const alignment =
     position === "right"
       ? vscode.StatusBarAlignment.Right
@@ -30,6 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
     const clockItem = new ClockItem(
       timezone,
       displaySeconds,
+      displayClockTitle,
       alignment,
       100 - index
     );
