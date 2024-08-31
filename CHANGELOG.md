@@ -2,6 +2,10 @@
 
 All notable changes to the "vscode-world-clock" extension will be documented in this file.
 
+## [1.0.1] - 2024-08-31
+
+- Add project icon
+
 ## [1.0.0] - 2024-08-31
 
 ### Added
