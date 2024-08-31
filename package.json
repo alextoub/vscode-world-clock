@@ -21,13 +21,37 @@
         "world-clock.timezones": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "object",
+            "properties": {
+              "timezone": {
+                "type": "string",
+                "description": "The IANA timezone name."
+              },
+              "title": {
+                "type": "string",
+                "description": "The custom title to display for this timezone."
+              }
+            },
+            "required": [
+              "timezone"
+            ],
+            "additionalProperties": false
           },
           "default": [
-            "UTC",
-            "America/New_York",
-            "Europe/Paris",
-            "Asia/Tokyo"
+            {
+              "timezone": "UTC"
+            },
+            {
+              "timezone": "America/New_York",
+              "title": "NY"
+            },
+            {
+              "timezone": "Europe/Paris"
+            },
+            {
+              "timezone": "Asia/Tokyo",
+              "title": "Tokyo"
+            }
           ],
           "description": "An array of timezones to display in the status bar."
         },
@@ -39,6 +63,11 @@
           ],
           "default": "right",
           "description": "The position of the world clock in the status bar. Can be 'left' or 'right'."
+        },
+        "world-clock.displaySeconds": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to show seconds in the status bar time."
         }
       }
     }

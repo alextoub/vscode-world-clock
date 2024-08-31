@@ -1,11 +1,13 @@
 import * as vscode from "vscode";
+import { Timezone } from "./extension";
 
 export class ClockItem {
   private statusBarItem: vscode.StatusBarItem;
   private interval: NodeJS.Timeout | undefined;
 
   constructor(
-    private timezone: string,
+    private timezone: Timezone,
+    private displaySeconds: boolean,
     alignment: vscode.StatusBarAlignment,
     priority: number
   ) {
@@ -16,10 +18,18 @@ export class ClockItem {
   // Update the status bar with the current date and time for the specified timezone
   private updateTime() {
     const now = new Date();
-    const formattedDateTime = now.toLocaleString("en-US", {
-      timeZone: this.timezone,
-    });
-    this.statusBarItem.text = `${this.timezone}: ${formattedDateTime}`;
+    const options: Intl.DateTimeFormatOptions = {
+      timeZone: this.timezone.timezone,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: this.displaySeconds ? "2-digit" : undefined,
+    };
+
+    const formattedDateTime = now.toLocaleString("en-US", options);
+    const title = this.timezone.title
+      ? this.timezone.title
+      : this.timezone.timezone;
+    this.statusBarItem.text = `${title ? title + " " : ""}${formattedDateTime}`;
     this.statusBarItem.show();
   }
 
