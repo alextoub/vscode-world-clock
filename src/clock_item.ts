@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { Timezone } from "./extension";
+import Timezone from "./models/Timezone";
 
 export class ClockItem {
   private statusBarItem: vscode.StatusBarItem;
