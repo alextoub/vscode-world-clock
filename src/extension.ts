@@ -6,12 +6,16 @@ import { ClockItem } from './clock_item';
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	const timezones = ['UTC', 'America/New_York', 'Europe/Paris', 'Asia/Tokyo']; // Example timezones
+	const configuration = vscode.workspace.getConfiguration('world-clock');
+
+	const timezones = configuration.get<string[]>('timezones') || [];
+	const position = configuration.get<string>('position') || 'right';
+	const alignment = position === 'right' ? vscode.StatusBarAlignment.Right : vscode.StatusBarAlignment.Left;
 	const clockItems: ClockItem[] = [];
 
 	// Create and start a ClockItem for each timezone
 	timezones.forEach((timezone, index) => {
-			const clockItem = new ClockItem(timezone, vscode.StatusBarAlignment.Left, 100 - index);
+			const clockItem = new ClockItem(timezone, alignment, 100 - index);
 			clockItem.start();
 			clockItems.push(clockItem);
 			context.subscriptions.push(clockItem);

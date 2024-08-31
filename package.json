@@ -9,15 +9,39 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "world-clock.helloWorld",
-        "title": "Hello World"
+    "configuration": {
+      "type": "object",
+      "title": "Clock World StatusBar Extension Configuration",
+      "properties": {
+        "world-clock.timezones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "UTC",
+            "America/New_York",
+            "Europe/Paris",
+            "Asia/Tokyo"
+          ],
+          "description": "An array of timezones to display in the status bar."
+        },
+        "world-clock.position": {
+          "type": "string",
+          "enum": [
+            "left",
+            "right"
+          ],
+          "default": "right",
+          "description": "The position of the world clock in the status bar. Can be 'left' or 'right'."
+        }
       }
-    ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
