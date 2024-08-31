@@ -1,71 +1,74 @@
-# world-clock README
+# World Clock VSCode Extension
 
-This is the README for your extension "world-clock". After writing up a brief description, we recommend including the following sections.
+## Purpose
+
+The World Clock VSCode Extension adds a customizable clock to your Visual Studio Code status bar. It allows you to display the current time in different timezones, with options to show seconds, use a 24-hour format, and customize the display format. This extension is useful for developers working across multiple timezones or who need to keep track of time in different regions.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Display the current time for multiple timezones.
+- Customizable display options including:
+  - Show/hide seconds
+  - Use 12-hour or 24-hour format
+  - Custom time format
+- Optionally display a title for each clock in the status bar.
+- Configure the position of the clock (left or right) in the status bar.
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Open Visual Studio Code.
+2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window.
+3. Search for "World Clock" and install the extension.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Configuration
 
-## Requirements
+You can configure the extension using the following settings in your `settings.json` file:
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+```json
+{
+  "world-clock.timezones": [
+    { "timezone": "UTC", "title": "UTC" },
+    { "timezone": "America/New_York", "title": "NY" },
+    { "timezone": "Europe/Paris" },
+    { "timezone": "Asia/Tokyo", "title": "Tokyo" }
+  ],
+  "world-clock.position": "left", // Options: "left" or "right"
+  "world-clock.displaySeconds": true, // Whether to show seconds
+  "world-clock.displayClockTitle": true, // Whether to show the title
+  "world-clock.priority": 100, // Priority for status bar items (lower numbers are higher priority)
+  "world-clock.is24Hour": false, // Whether to use 24-hour format
+  "world-clock.customTimeFormat": "" // Custom time format string (e.g., "HH:mm:ss")
+}
+```
 
-## Extension Settings
+## Example
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+To display clocks for New York and Tokyo on the right side of the status bar, with seconds shown and using 24-hour format:
 
-For example:
+```json
+{
+  "world-clock.timezones": [
+    { "timezone": "America/New_York", "title": "NY" },
+    { "timezone": "Asia/Tokyo", "title": "Tokyo" }
+  ],
+  "world-clock.position": "right",
+  "world-clock.displaySeconds": true,
+  "world-clock.displayClockTitle": true,
+  "world-clock.is24Hour": true
+}
+```
 
-This extension contributes the following settings:
+## Contributing
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+Contributions are welcome!
+To contribute:
 
-## Known Issues
+1. **Fork the repository**: Click the "Fork" button at the top right of the repository page on GitHub to create your own copy of the repository.
+2. **Clone your fork**: Clone your forked repository to your local machine (`git clone https://github.com/alextoub/vscode-world-clock.git`).
+3. **Create a new branch**: Create a new branch for your feature or fix (`git checkout -b feature/your-feature-name`).
+4. **Make your changes**: Implement your changes or new features.
+5. **Commit your changes**: Commit your changes with a descriptive message (`git commit -am 'Add new feature'`).
+6. **Push to your fork**: Push your changes to your forked repository (`git push origin feature/your-feature-name`).
+7. **Create a Pull Request**: Open a Pull Request on the original repository, describing your changes and why they should be merged.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Please make sure to follow the coding style used in the project and include tests for any new features or bug fixes.

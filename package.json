@@ -1,8 +1,8 @@
 {
-  "name": "world-clock",
-  "displayName": "World Clock",
+  "name": "vscode-world-clock",
+  "displayName": "World Clock VSCode Extension",
   "description": "",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.92.0"
   },
