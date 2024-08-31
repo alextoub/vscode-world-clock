@@ -1,0 +1,43 @@
+// The module 'vscode' contains the VS Code extensibility API
+// Import the module and reference it with the alias vscode in your code below
+import * as vscode from 'vscode';
+import { ClockItem } from './clock_item';
+
+// This method is called when your extension is activated
+// Your extension is activated the very first time the command is executed
+export function activate(context: vscode.ExtensionContext) {
+	const timezones = ['UTC', 'America/New_York', 'Europe/Paris', 'Asia/Tokyo']; // Example timezones
+	const clockItems: ClockItem[] = [];
+
+	// Create and start a ClockItem for each timezone
+	timezones.forEach((timezone, index) => {
+			const clockItem = new ClockItem(timezone, vscode.StatusBarAlignment.Left, 100 - index);
+			clockItem.start();
+			clockItems.push(clockItem);
+			context.subscriptions.push(clockItem);
+	});
+
+	// Use the console to output diagnostic information (console.log) and errors (console.error)
+	// This line of code will only be executed once when your extension is activated
+	// console.log('Congratulations, your extension "world-clock" is now active!');
+
+	// // The command has been defined in the package.json file
+	// // Now provide the implementation of the command with registerCommand
+	// // The commandId parameter must match the command field in package.json
+	// const disposable = vscode.commands.registerCommand('world-clock.helloWorld', () => {
+	// 	// The code you place here will be executed every time your command is executed
+	// 	// Display a message box to the user
+	// 	vscode.window.showInformationMessage('Hello World from Woddrld Clock!');
+	// 	let statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+  //   statusBarItem.text = "Hello";
+  //   statusBarItem.show();
+
+  //   // Add to a list of disposables which are disposed when the extension is deactivated.
+  //   context.subscriptions.push(statusBarItem);
+	// });
+
+	// context.subscriptions.push(disposable);
+}
+
+// This method is called when your extension is deactivated
+export function deactivate() {}
