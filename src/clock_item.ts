@@ -9,6 +9,7 @@ export class ClockItem {
     private timezone: Timezone,
     private displaySeconds: boolean,
     private displayClockTitle: boolean,
+    private is24Hour: boolean,
     alignment: vscode.StatusBarAlignment,
     priority: number
   ) {
@@ -24,6 +25,7 @@ export class ClockItem {
       hour: "2-digit",
       minute: "2-digit",
       second: this.displaySeconds ? "2-digit" : undefined,
+      hour12: !this.is24Hour,
     };
 
     const formattedDateTime = now.toLocaleString("en-US", options);

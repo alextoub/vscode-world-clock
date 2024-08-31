@@ -78,6 +78,11 @@
           "type": "number",
           "default": 100,
           "description": "The priority of the world clock in the status bar. Higher priority means it will be shown more to the left."
+        },
+        "world-clock.is24Hour": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to show clock in 24-hour format."
         }
       }
     }

@@ -23,6 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
     false
   );
   const priority = configuration.get<number>("priority") || 100;
+  const is24Hour: boolean = configuration.get("is24Hour", false);
   const alignment =
     position === "right"
       ? vscode.StatusBarAlignment.Right
@@ -35,6 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
       timezone,
       displaySeconds,
       displayClockTitle,
+      is24Hour,
       alignment,
       priority - index
     );
