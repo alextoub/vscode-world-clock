@@ -22,6 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
     "displayClockTitle",
     false
   );
+  const priority = configuration.get<number>("priority") || 100;
   const alignment =
     position === "right"
       ? vscode.StatusBarAlignment.Right
@@ -35,7 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
       displaySeconds,
       displayClockTitle,
       alignment,
-      100 - index
+      priority - index
     );
     clockItem.start();
     clockItems.push(clockItem);

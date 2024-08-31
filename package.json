@@ -73,6 +73,11 @@
           "type": "boolean",
           "default": true,
           "description": "Whether to show clock title in the status bar time."
+        },
+        "world-clock.priority": {
+          "type": "number",
+          "default": 100,
+          "description": "The priority of the world clock in the status bar. Higher priority means it will be shown more to the left."
         }
       }
     }
