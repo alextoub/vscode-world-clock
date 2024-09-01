@@ -69,7 +69,7 @@
               "title": "Tokyo"
             }
           ],
-          "description": "An array of timezones to display in the status bar."
+          "description": "An array of timezones to display in the status bar.\n\nExample:\n```\n\"world-clock.timezones\": [\n{\n\"timezone\": \"Europe/Paris\",\n\"title\": \"Paris\"\n},{\n\"timezone\": \"America/Los_Angeles\",\n\"title\": \"LA\"\n}]\n```\n\n"
         },
         "world-clock.position": {
           "type": "string",
