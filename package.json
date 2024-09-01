@@ -1,8 +1,8 @@
 {
   "name": "vscode-world-clock",
-  "displayName": "World Clock VSCode Extension",
+  "displayName": "World Clock",
   "description": "World Clock VSCode adds a customizable clock to your Visual Studio Code status bar.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "engines": {
     "vscode": "^1.92.0"
   },
@@ -14,6 +14,21 @@
   "activationEvents": [
     "onStartupFinished"
   ],
+  "license": "MIT",
+  "keywords": [
+    "world",
+    "clock",
+    "time",
+    "timezone",
+    "statusbar"
+  ],
+  "bugs": {
+    "url": "https://github.com/alextoub/vscode-world-clock/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alextoub/vscode-world-clock"
+  },
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
