@@ -2,6 +2,11 @@
 
 All notable changes to the "vscode-world-clock" extension will be documented in this file.
 
+## [1.0.2] - 2024-08-31
+
+- Update README.md
+- Add VSCode Marketplace support
+
 ## [1.0.1] - 2024-08-31
 
 - Add project icon

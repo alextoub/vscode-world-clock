@@ -14,7 +14,6 @@
   "activationEvents": [
     "onStartupFinished"
   ],
-  "license": "MIT",
   "keywords": [
     "world",
     "clock",
