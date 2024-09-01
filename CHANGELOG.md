@@ -2,6 +2,11 @@
 
 All notable changes to the "vscode-world-clock" extension will be documented in this file.
 
+## [1.0.5] - 2024-09-01
+
+- Update name in settings.json
+- Allow update configuration on settings.json saved
+
 ## [1.0.4] - 2024-08-31
 
 - Reduce project size remove assets

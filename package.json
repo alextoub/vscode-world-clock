@@ -2,7 +2,7 @@
   "name": "vscode-world-clock",
   "displayName": "World Clock",
   "description": "World Clock adds a customizable clock to your Visual Studio Code status bar.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "engines": {
     "vscode": "^1.92.0"
   },
