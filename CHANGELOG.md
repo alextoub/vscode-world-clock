@@ -2,9 +2,13 @@
 
 All notable changes to the "vscode-world-clock" extension will be documented in this file.
 
-## [1.0.2] - 2024-08-31
+## [1.0.4] - 2024-08-31
 
-- Update extension logo
+- Reduce project size remove assets
+
+## [1.0.3] - 2024-08-31
+
+- Update extension icon
 
 ## [1.0.2] - 2024-08-31
 
