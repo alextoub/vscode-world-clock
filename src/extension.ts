@@ -7,6 +7,14 @@ import { activateExtension } from "./activateLogic";
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   activateExtension(context);
+
+  vscode.workspace.onDidChangeConfiguration((event) => {
+    if (event.affectsConfiguration("world-clock")) {
+      context.subscriptions.forEach((subscription) => subscription.dispose());
+      context.subscriptions.length = 0;
+      activateExtension(context);
+    }
+  });
 }
 
 // This method is called when your extension is deactivated
