@@ -6,6 +6,17 @@ import { activateExtension } from "./activateLogic";
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  let disposable = vscode.commands.registerCommand(
+    "extension.openSettings",
+    () => {
+      vscode.commands.executeCommand(
+        "workbench.action.openSettings",
+        "world-clock"
+      );
+    }
+  );
+  context.subscriptions.push(disposable);
+
   activateExtension(context);
 
   vscode.workspace.onDidChangeConfiguration((event) => {
