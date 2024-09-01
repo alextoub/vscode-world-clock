@@ -14,11 +14,12 @@ export class ClockItem {
     priority: number
   ) {
     this.statusBarItem = vscode.window.createStatusBarItem(alignment, priority);
+    this.statusBarItem.command = "extension.openSettings";
+    this.statusBarItem.tooltip = "Click to open settings";
     this.updateTime();
   }
 
-  // Update the status bar with the current date and time for the specified timezone
-  private updateTime() {
+  private formatTime(): string {
     const now = new Date();
     const options: Intl.DateTimeFormatOptions = {
       timeZone: this.timezone.timezone,
@@ -28,19 +29,25 @@ export class ClockItem {
       hour12: !this.is24Hour,
     };
 
-    const formattedDateTime = now.toLocaleString("en-US", options);
-    const title = this.displayClockTitle
-      ? this.timezone.title
-        ? this.timezone.title
-        : this.timezone.timezone
-      : null;
+    return now.toLocaleString("en-US", options);
+  }
+
+  private getDisplayTitle(): string | null {
+    if (!this.displayClockTitle) return null;
+    return this.timezone.title || this.timezone.timezone;
+  }
+
+  private updateTime() {
+    const formattedDateTime = this.formatTime();
+    const title = this.getDisplayTitle();
+
     this.statusBarItem.text = `${title ? title + " " : ""}${formattedDateTime}`;
-    this.statusBarItem.show();
   }
 
   // Start the interval to update the time every second
   public start() {
     this.updateTime();
+    this.statusBarItem.show();
     this.interval = setInterval(() => this.updateTime(), 1000);
   }
 
