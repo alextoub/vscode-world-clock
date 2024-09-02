@@ -14,7 +14,7 @@ export class ClockItem {
     priority: number
   ) {
     this.statusBarItem = vscode.window.createStatusBarItem(alignment, priority);
-    this.statusBarItem.command = "extension.openSettings";
+    this.statusBarItem.command = "extension.openWorldClockSettings";
     this.statusBarItem.tooltip = "Click to open settings";
     this.updateTime();
   }

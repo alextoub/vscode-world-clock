@@ -7,11 +7,11 @@ import { activateExtension } from "./activateLogic";
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
-    "extension.openSettings",
+    "extension.openWorldClockSettings",
     () => {
       vscode.commands.executeCommand(
         "workbench.action.openSettings",
-        "world-clock"
+        "@ext:AlexandreToubiana.vscode-world-clock"
       );
     }
   );
