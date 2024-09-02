@@ -17,7 +17,8 @@ export function activateExtension(context: vscode.ExtensionContext) {
       ? vscode.StatusBarAlignment.Right
       : vscode.StatusBarAlignment.Left;
 
-  const clockItems = createClockItems(
+  createClockItems(
+    context,
     timezones,
     displaySeconds,
     displayClockTitle,
@@ -25,8 +26,4 @@ export function activateExtension(context: vscode.ExtensionContext) {
     alignment,
     priority
   );
-
-  clockItems.forEach((clockItem) => {
-    context.subscriptions.push(clockItem);
-  });
 }
