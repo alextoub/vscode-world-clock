@@ -2,6 +2,14 @@
 
 All notable changes to the "vscode-world-clock" extension will be documented in this file.
 
+## [1.1.0] - 2024-09-02
+
+- Redirect to Settings UI on StatusBarItem click
+- Improve performance
+- Fix issue causing duplication of StatusBarItem on save
+- Update title in Settings UI
+- Add more information about Timezone format in Settings UI
+
 ## [1.0.5] - 2024-09-01
 
 - Update name in settings.json
