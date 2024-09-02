@@ -1,17 +1,9 @@
 import * as vscode from "vscode";
 import { ClockItem } from "./clockItem";
 import Timezone from "./models/Timezone";
+import { isValidTimezone } from "./utils";
 
 let clockItems: ClockItem[] = [];
-
-function isValidTimeZone(timezone: string): boolean {
-  try {
-    new Intl.DateTimeFormat(undefined, { timeZone: timezone });
-    return true;
-  } catch (error) {
-    return false;
-  }
-}
 
 export function createClockItems(
   context: vscode.ExtensionContext,
@@ -26,7 +18,7 @@ export function createClockItems(
   clockItems = [];
 
   timezones.forEach((timezone: Timezone, index: number) => {
-    if (isValidTimeZone(timezone.timezone)) {
+    if (isValidTimezone(timezone.timezone)) {
       const clockItem = new ClockItem(
         timezone,
         displaySeconds,
