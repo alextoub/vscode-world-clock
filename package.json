@@ -7,6 +7,12 @@
     "vscode": "^1.92.0"
   },
   "publisher": "AlexandreToubiana",
+  "contributors": [
+    {
+      "name": "jons",
+      "url": "http://github.com/jons"
+    }
+  ],
   "icon": "icon.png",
   "categories": [
     "Other"
@@ -46,6 +52,31 @@
               "title": {
                 "type": "string",
                 "description": "The custom title to display for this timezone."
+              },
+              "windows": {
+                "type": "array",
+                "description": "Optional list of hour ranges during which (in that clock's local time) to change this clock's style",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "color": {
+                        "type": "string",
+                        "description": "Color of the text: a hash (#) followed by a six-character hexadecimal color code."
+                    },
+                    "start": {
+                        "type": "integer",
+                        "description": "The hour to start applying the style (inclusive), in 24-hour format, in the timezone of this clock: 0 to 23."
+                    },
+                    "end": {
+                        "type": "integer",
+                        "description": "The hour to stop applying the style (exclusive), in 24-hour format, in the timezone of this clock: 1 to 24."
+                    }
+                  },
+                  "required": [
+                    "color", "start", "end"
+                  ],
+                  "additionalProperties": false
+                }
               }
             },
             "required": [

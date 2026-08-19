@@ -1,8 +1,10 @@
+/// <reference types="node" />
 import * as vscode from "vscode";
 import Timezone from "./models/Timezone";
 
 export class ClockItem {
   private statusBarItem: vscode.StatusBarItem;
+  private defaultColor: string | vscode.ThemeColor | undefined;
   private interval: NodeJS.Timeout | undefined;
 
   constructor(
@@ -16,11 +18,11 @@ export class ClockItem {
     this.statusBarItem = vscode.window.createStatusBarItem(alignment, priority);
     this.statusBarItem.command = "extension.openWorldClockSettings";
     this.statusBarItem.tooltip = "Click to open settings";
+    this.defaultColor = this.statusBarItem.color;
     this.updateTime();
   }
 
-  private formatTime(): string {
-    const now = new Date();
+  private formatTime(now: Date): string {
     const options: Intl.DateTimeFormatOptions = {
       timeZone: this.timezone.timezone,
       hour: "2-digit",
@@ -33,15 +35,34 @@ export class ClockItem {
   }
 
   private getDisplayTitle(): string | null {
-    if (!this.displayClockTitle) return null;
-    return this.timezone.title || this.timezone.timezone;
+    if (!this.displayClockTitle) return "";
+    const title = this.timezone.title || this.timezone.timezone;
+    return title ? title + " " : "";
+  }
+
+  private getWindowColor(formatted: string): string | vscode.ThemeColor | undefined {
+    let hour = parseInt(
+        formatted.substring(0, formatted.indexOf(":")));
+    // xxx: safe to check "PM" because we currently have a hardcoded locale, and
+    // 24hour has no suffix at all
+    if (formatted.endsWith("PM")) {
+        hour += hour % 12;
+    }
+    // just take the first match; it's incumbent on the user to define ranges
+    // correctly
+    const window = this.timezone
+        .windows?.find(w => w.start <= hour && w.end > hour);
+    return window?.color || this.defaultColor;
   }
 
   private updateTime() {
-    const formattedDateTime = this.formatTime();
+    const now = new Date();
+    const formattedDateTime = this.formatTime(now);
+    const color = this.getWindowColor(formattedDateTime);
     const title = this.getDisplayTitle();
 
-    this.statusBarItem.text = `${title ? title + " " : ""}${formattedDateTime}`;
+    this.statusBarItem.text = `${title}${formattedDateTime}`;
+    this.statusBarItem.color = color;
   }
 
   // Start the interval to update the time every second
