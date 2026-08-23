@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import { ClockItem } from "./clockItem";
 import Timezone from "./models/Timezone";
+
 import { isValidTimezone } from "./utils";
 
 let clockItems: ClockItem[] = [];
