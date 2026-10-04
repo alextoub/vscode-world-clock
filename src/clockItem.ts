@@ -33,7 +33,9 @@ export class ClockItem {
   }
 
   private getDisplayTitle(): string | null {
-    if (!this.displayClockTitle) return null;
+    if (!this.displayClockTitle) {
+      return null;
+    }
     return this.timezone.title || this.timezone.timezone;
   }
 
