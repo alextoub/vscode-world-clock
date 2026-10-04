@@ -70,7 +70,7 @@ jobs:
           npm version "${RELEASE_TAG#v}" --no-git-tag-version --allow-same-version --ignore-scripts
 
       - name: Use Open VSX publisher
-        run: npm pkg set publisher=alextoub
+        run: npm pkg set publisher=Alextoub
 
       - name: Publish to Open VSX for Cursor
         uses: HaaLeo/publish-vscode-extension@v1
